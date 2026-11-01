@@ -6,9 +6,8 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
+
     public function index()
     {
     return view('index');
@@ -32,6 +31,11 @@ class HomeController extends Controller
      public function forgotpassword()
     {
     return view('forgotpassword');
+    }
+
+     public function resetpassword()
+    {
+    return view('reset-password');
     }
     /**
      * Show the form for creating a new resource.

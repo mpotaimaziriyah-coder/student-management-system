@@ -29,7 +29,7 @@
                     <a href="{{ route('contact') }}" class="text-slate-500 hover:text-slate-900 text-sm font-medium">Contact registry</a>
                     <a href="{{ route('login') }}" class="px-5 py-2.5 border border-slate-200 text-slate-900 rounded-lg font-medium text-sm text-center">Sign in</a>
                     <a href="{{ route('register') }}" class="px-5 py-2.5 bg-[#2563eb] text-white rounded-lg font-medium text-sm text-center">Create account</a>
-                        <a href="{{ route('forgotpassword') }}" class="text-slate-900 text-sm font-medium"></a>
+                    <a href="{{ route('forgotpassword') }}" class="text-slate-900 text-sm font-medium"></a>
                 </div>
             </div>
         </div>

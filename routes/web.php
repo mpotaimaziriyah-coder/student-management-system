@@ -7,6 +7,8 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\ResetPasswordController;
+
 
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
@@ -17,8 +19,7 @@ Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/register', [RegisterController::class,'register'])->name('register');
 Route::post('/forgotpassword', [ForgotPasswordController::class,'forgotpassword'])->name('forgotpassword');
 Route::get('/forgotpassword', [ForgotPasswordController::class,'forgotpassword'])->name('forgotpassword');
-
-
+Route::get('/reset-password', [ResetPasswordController::class, 'resetpassword'])->name('password.reset');
 
 
 
