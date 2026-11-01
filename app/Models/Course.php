@@ -1,0 +1,33 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
+class Course extends Model
+{
+    protected $fillable = [
+        'lecturer_id',
+        'code',
+        'name',
+        'description',
+        'credit_hours',
+        'semester',
+        'academic_year',
+        'status',
+    ];
+
+    public function lecturer(): BelongsTo
+    {
+        return $this->belongsTo(Lecturer::class);
+    }
+
+    public function students(): BelongsToMany
+    {
+        return $this->belongsToMany(Student::class, 'registrations')
+            ->withPivot('status', 'created_at')
+            ->withTimestamps();
+    }
+}
