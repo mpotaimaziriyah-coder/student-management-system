@@ -19,8 +19,20 @@ class HomeController extends Controller
     return view('contact');
     }
 
+    public function login()
+    {
+    return view('login');
+    }
     
+     public function register()
+    {
+    return view('register');
+    }
 
+     public function forgotpassword()
+    {
+    return view('forgotpassword');
+    }
     /**
      * Show the form for creating a new resource.
      */

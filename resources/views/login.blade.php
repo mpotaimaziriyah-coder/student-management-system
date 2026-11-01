@@ -1,21 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign in &mdash; MUBS Student Management System</title>
-    <link rel="icon" type="image/png" href="assets/img/logo.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] } } } };
-    </script>
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <script src="https://unpkg.com/lucide@latest"></script>
-</head>
-<body class="bg-white text-slate-900 font-sans antialiased min-h-screen flex flex-col">
+@extends('layouts.main')
+@section('content')
+
+
     <div class="flex-1 flex items-center justify-center p-4 bg-white">
         <div class="w-full max-w-md">
             <div class="flex justify-center mb-8">
@@ -31,7 +17,7 @@
                     <p class="mt-1 text-sm text-slate-500">Use your MUBS email to register for courses, or sign in as a lecturer or administrator.</p>
                 </div>
 
-                <form action="dashboard.html" method="get" class="space-y-5">
+                <form action="{{ route('login') }}" method="POST" class="space-y-5">
                     <div>
                         <label for="email" class="block text-sm font-medium text-slate-600 mb-2">Email</label>
                         <div class="relative">
@@ -80,16 +66,6 @@
         </div>
     </div>
     <!-- Start: Footer -->
-    <footer class="bg-[#1e3a8a]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-3">
-                <p class="text-sm text-blue-100">&copy; 2026 <span class="font-semibold text-white">MUBS Student Management System</span>. All rights reserved.</p>
-                <p class="text-sm text-blue-200">Registry &middot; Computing &middot; Business Admin &middot; Economics</p>
-            </div>
-        </div>
-    </footer>
+    @include('layouts.footer')
     <!-- End: Footer -->
-
-    <script>lucide.createIcons();</script>
-</body>
-</html>
+@endsection
