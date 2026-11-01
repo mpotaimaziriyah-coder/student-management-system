@@ -1,70 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MUBS Student Management System | Students, courses &amp; registrations</title>
-    <meta name="description" content="Register for courses, follow your registrations, and keep your student record up to date. Sign in with your MUBS email.">
-    <link rel="icon" type="image/png" href="assets/img/logo.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: { 400: '#60a5fa', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8' },
-                        gold: { 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706' },
-                    },
-                    fontFamily: { sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'] },
-                }
-            }
-        };
-    </script>
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <script src="https://unpkg.com/lucide@latest"></script>
-</head>
-<body class="bg-white text-slate-900 font-sans antialiased">
+@extends('layouts.main')
+@section('content')
     <!-- Start: Header -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <a href="index.html" class="flex items-center gap-3">
-                    <img src="assets/img/logo.png" alt="MUBS Student Management System" class="h-11 w-11">
-                    <div class="hidden sm:block">
-                        <p class="text-sm font-semibold text-slate-900 leading-tight">MUBS Student Management</p>
-                        <p class="text-[11px] text-slate-500">Makerere University Business School</p>
-                    </div>
-                </a>
-                <div class="hidden md:flex items-center gap-8">
-                    <a href="index.html" class="text-slate-900 text-sm font-medium">Home</a>
-                    <a href="#how-it-works" class="text-slate-500 hover:text-slate-900 transition-colors text-sm font-medium">How it works</a>
-                    <a href="#modules" class="text-slate-500 hover:text-slate-900 transition-colors text-sm font-medium">Modules</a>
-                    <a href="#who" class="text-slate-500 hover:text-slate-900 transition-colors text-sm font-medium">Who can use it</a>
-                    <a href="contact.html" class="text-slate-500 hover:text-slate-900 transition-colors text-sm font-medium">Contact registry</a>
-                    <a href="login.html" class="px-5 py-2.5 border border-slate-200 text-slate-900 rounded-lg font-medium text-sm hover:bg-white hover:border-[#2563eb]/40">Sign in</a>
-                    <a href="register.html" class="px-5 py-2.5 bg-[#2563eb] text-white rounded-lg font-medium text-sm hover:bg-[#1d4ed8] glow-blue">Create account</a>
-                </div>
-                <label for="mobile-nav-toggle" class="md:hidden p-2 text-slate-900 cursor-pointer">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
-                </label>
-            </div>
-            <input type="checkbox" id="mobile-nav-toggle" class="peer hidden">
-            <div class="hidden peer-checked:block md:!hidden py-4 border-t border-slate-200">
-                <div class="flex flex-col gap-4">
-                    <a href="index.html" class="text-slate-900 text-sm font-medium">Home</a>
-                    <a href="#how-it-works" class="text-slate-500 hover:text-slate-900 text-sm font-medium">How it works</a>
-                    <a href="#modules" class="text-slate-500 hover:text-slate-900 text-sm font-medium">Modules</a>
-                    <a href="#who" class="text-slate-500 hover:text-slate-900 text-sm font-medium">Who can use it</a>
-                    <a href="contact.html" class="text-slate-500 hover:text-slate-900 text-sm font-medium">Contact registry</a>
-                    <a href="login.html" class="px-5 py-2.5 border border-slate-200 text-slate-900 rounded-lg font-medium text-sm text-center">Sign in</a>
-                    <a href="register.html" class="px-5 py-2.5 bg-[#2563eb] text-white rounded-lg font-medium text-sm text-center">Create account</a>
-                </div>
-            </div>
-        </div>
-    </header>
+   @include('layouts.header')
+    
     <!-- End: Header -->
 
     <!-- Start: Hero -->
@@ -331,53 +269,11 @@
     <!-- End: Call to action -->
 
     <!-- Start: Footer -->
-    <footer class="bg-[#1e3a8a] text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-                <div>
-                    <div class="flex items-center gap-3 mb-6">
-                        <img src="assets/img/logo.png" alt="" class="h-12 w-12">
-                        <span class="font-semibold">MUBS Student Management</span>
-                    </div>
-                    <p class="text-blue-100 text-sm leading-relaxed max-w-sm">The student management system for Makerere University Business School. Sign in with your MUBS email.</p>
-                </div>
-                <div>
-                    <h4 class="font-bold text-lg mb-6">Quick links</h4>
-                    <ul class="space-y-3 text-sm text-blue-100">
-                        <li><a href="login.html" class="hover:text-white">Sign in</a></li>
-                        <li><a href="register.html" class="hover:text-white">Create account</a></li>
-                        <li><a href="courses.html" class="hover:text-white">Available courses</a></li>
-                        <li><a href="admin/dashboard.html" class="hover:text-white">Admin dashboard</a></li>
-                        <li><a href="contact.html" class="hover:text-white">Contact registry</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold text-lg mb-6">Faculties</h4>
-                    <ul class="space-y-3 text-sm text-blue-100">
-                        <li>Faculty of Computing</li>
-                        <li>Faculty of Business Administration</li>
-                        <li>Faculty of Economics</li>
-                        <li>Postgraduate programmes</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold text-lg mb-6">Contact</h4>
-                    <ul class="space-y-2 text-sm text-blue-100">
-                        <li><a href="contact.html" class="hover:text-white">registry@mubs.ac.ug</a></li>
-                        <li>Registry: 0414 000 210</li>
-                        <li>ICT support: 0414 000 211</li>
-                        <li class="text-[#fbbf24] pt-2">Mon&ndash;Fri, 8:00am &ndash; 5:00pm</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="pt-8 border-t border-blue-800 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-blue-200">
-                <p>&copy; 2026 MUBS Student Management System. All rights reserved.</p>
-                <p>Privacy &middot; Acceptable use &middot; Registry policy</p>
-            </div>
-        </div>
-    </footer>
+  @include('layouts.footer')
+    
     <!-- End: Footer -->
 
-    <script>lucide.createIcons();</script>
-</body>
-</html>
+@endsection
+
+
+
