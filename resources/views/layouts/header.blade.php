@@ -31,7 +31,115 @@
                     <a href="login.html" class="px-5 py-2.5 border border-slate-200 text-slate-900 rounded-lg font-medium text-sm hover:bg-white hover:border-[#2563eb]/40">Sign in</a>
                     <a href="register.html" class="px-5 py-2.5 bg-[#2563eb] text-white rounded-lg font-medium text-sm hover:bg-[#1d4ed8] glow-blue">Create account</a>
                 </div>
-                <label for="mobile-nav-toggle" class="md:hidden p-2 text-slate-900 cursor-pointer">
+                <label for="mobile-nav-toggle" clas<header class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="flex items-center justify-between h-20">
+
+            <!-- Logo and Website Name -->
+            <a href="{{ route('index') }}" class="flex items-center gap-3">
+                <img src="{{ asset('assets/img/logo.png') }}"
+                     alt="MUBS Student Management System"
+                     class="h-11 w-11">
+
+                <div class="hidden sm:block">
+                    <p class="text-sm font-semibold text-slate-900 leading-tight">
+                        MUBS Student Management
+                    </p>
+                    <p class="text-[11px] text-slate-500">
+                        Makerere University Business School
+                    </p>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center gap-6">
+
+                <a href="{{ route('index') }}"
+                   class="text-slate-900 text-sm font-medium">
+                    Home
+                </a>
+
+                <a href="{{ route('index') }}#how-it-works"
+                   class="text-slate-500 hover:text-slate-900 text-sm font-medium">
+                    How it works
+                </a>
+
+                <a href="{{ route('index') }}#modules"
+                   class="text-slate-500 hover:text-slate-900 text-sm font-medium">
+                    Modules
+                </a>
+
+                <a href="{{ route('index') }}#who"
+                   class="text-slate-500 hover:text-slate-900 text-sm font-medium">
+                    Who can use it
+                </a>
+
+                <a href="{{ route('contact') }}"
+                   class="text-slate-500 hover:text-slate-900 text-sm font-medium">
+                    Contact
+                </a>
+
+                <a href="{{ route('login') }}"
+                   class="px-4 py-2.5 border border-slate-200 text-slate-900 rounded-lg font-medium text-sm hover:bg-slate-50">
+                    Sign in
+                </a>
+
+                <a href="{{ route('register') }}"
+                   class="px-4 py-2.5 bg-[#2563eb] text-white rounded-lg font-medium text-sm hover:bg-[#1d4ed8]">
+                    Create account
+                </a>
+
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <label for="mobile-nav-toggle"
+                   class="md:hidden p-2 text-slate-900 cursor-pointer">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </label>
+
+        </div>
+
+        <!-- Mobile Navigation -->
+        <input type="checkbox" id="mobile-nav-toggle" class="peer hidden">
+
+        <div class="hidden peer-checked:block md:!hidden py-4 border-t border-slate-200">
+
+            <div class="flex flex-col gap-4">
+
+                <a href="{{ route('index') }}" class="text-slate-900 text-sm font-medium">
+                    Home
+                </a>
+
+                <a href="{{ route('index') }}#how-it-works" class="text-slate-500 text-sm font-medium">
+                    How it works
+                </a>
+
+                <a href="{{ route('index') }}#modules" class="text-slate-500 text-sm font-medium">
+                    Modules
+                </a>
+
+                <a href="{{ route('index') }}#who" class="text-slate-500 text-sm font-medium">
+                    Who can use it
+                </a>
+
+                <a href="{{ route('contact') }}" class="text-slate-500 text-sm font-medium">
+                    Contact
+                </a>
+
+                <a href="{{ route('login') }}" class="px-5 py-2.5 border border-slate-200 text-slate-900 rounded-lg text-sm text-center">
+                    Sign in
+                </a>
+
+                <a href="{{ route('register') }}" class="px-5 py-2.5 bg-[#2563eb] text-white rounded-lg text-sm text-center">
+                    Create account
+                </a>
+
+            </div>
+        </div>
+
+    </div>
+</header>s="md:hidden p-2 text-slate-900 cursor-pointer">
  develop
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </label>
