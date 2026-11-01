@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+feature/contact-page
     /**
      * Display a listing of the resource.
      */
@@ -79,5 +80,10 @@ class HomeController extends Controller
     public function destroy(string $id)
     {
         //
+
+    public function index()
+    {
+        return view('index');
+ develop
     }
 }
