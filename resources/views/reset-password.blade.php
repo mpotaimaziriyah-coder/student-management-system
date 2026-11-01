@@ -31,7 +31,7 @@
 
                 <p class="mt-6 text-center text-sm text-slate-500">
                     Trouble with the link?
-                    <a href="contact.html" class="text-[#2563eb] hover:text-[#1d4ed8]">Contact the registry</a>
+                    <a href="{{ route('contact') }}" class="text-[#2563eb] hover:text-[#1d4ed8]">Contact the registry</a>
                 </p>
             </div>
         </div>

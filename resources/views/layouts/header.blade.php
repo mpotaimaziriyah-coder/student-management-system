@@ -15,8 +15,7 @@
                     <a href="#who" class="text-slate-500 hover:text-slate-900 transition-colors text-sm font-medium">Who can use it</a>
                     <a href="{{ route('contact') }}" class="text-slate-500 hover:text-slate-900 transition-colors text-sm font-medium">Contact registry</a>
                     <a href="{{ route('login') }}" class="px-5 py-2.5 border border-slate-200 text-slate-900 rounded-lg font-medium text-sm hover:bg-white hover:border-[#2563eb]/40">Sign in</a>
-                        <a href="{{ route('forgotpassword') }}" class="text-slate-900 text-sm font-medium"></a>
-                    <i data-lucide="menu" class="w-6 h-6"></i>
+                        
                 </label>
             </div>
             <input type="checkbox" id="mobile-nav-toggle" class="peer hidden">
@@ -29,7 +28,7 @@
                     <a href="{{ route('contact') }}" class="text-slate-500 hover:text-slate-900 text-sm font-medium">Contact registry</a>
                     <a href="{{ route('login') }}" class="px-5 py-2.5 border border-slate-200 text-slate-900 rounded-lg font-medium text-sm text-center">Sign in</a>
                     <a href="{{ route('register') }}" class="px-5 py-2.5 bg-[#2563eb] text-white rounded-lg font-medium text-sm text-center">Create account</a>
-                    <a href="{{ route('forgotpassword') }}" class="text-slate-900 text-sm font-medium"></a>
+                    
                 </div>
             </div>
         </div>

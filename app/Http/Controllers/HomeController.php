@@ -30,7 +30,7 @@ class HomeController extends Controller
 
      public function forgotpassword()
     {
-    return view('forgotpassword');
+    return view('forgot-password');
     }
 
      public function resetpassword()

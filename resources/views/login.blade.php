@@ -27,7 +27,7 @@
                             <input type="email" id="email" name="email" required autofocus placeholder="you@mubs.ac.ug"
                                 class="block w-full pl-10 pr-3 py-3 rounded-xl bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#2563eb] focus:ring-1 focus:ring-[#2563eb]">
                         </div>
-                    </div>
+                    </div><a href="{{ route('password.request') }}">Forgot Password?</a>
                     <div>
                         <label for="password" class="block text-sm font-medium text-slate-600 mb-2">Password</label>
                         <div class="relative">
@@ -36,6 +36,7 @@
                             </div>
                             <input type="password" id="password" name="password" required placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"
                                 class="block w-full pl-10 pr-3 py-3 rounded-xl bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#2563eb] focus:ring-1 focus:ring-[#2563eb]">
+
                         </div>
                     </div>
                     <div class="flex items-center justify-between">

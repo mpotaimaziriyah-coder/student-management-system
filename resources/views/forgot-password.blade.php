@@ -17,7 +17,7 @@
                     <p class="mt-1 text-sm text-slate-500">Enter the email on your account and the registry will send you a reset link.</p>
                 </div>
 
-                <form action="{{ route('forgotpassword') }}" method="POST" class="space-y-5">
+                <form action="login.html" method="post" class="space-y-5"></form>
                     @crsf
                     <div>
                         <label for="email" class="block text-sm font-medium text-slate-600 mb-2">Email</label>
