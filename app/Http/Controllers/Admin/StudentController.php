@@ -41,6 +41,8 @@ class StudentController extends Controller
 
     public function show(Student $student)
     {
+        $student->load('courses.lecturer');
+
         return view('admin.students.show', compact('student'));
     }
 
@@ -71,6 +73,11 @@ class StudentController extends Controller
 
     public function destroy(Student $student)
     {
+        if ($student->registrations()->exists()) {
+            return redirect()->route('admin.students.index')
+                ->with('error', 'This student has course registrations. Remove them first before deleting the student.');
+        }
+
         $student->delete();
 
         return redirect()->route('admin.students.index')

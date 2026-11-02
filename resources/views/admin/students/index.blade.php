@@ -8,6 +8,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body class="bg-slate-50">
+@include('partials.role-nav')
 <div class="min-h-screen">
     {{-- Keep your existing sidebar/header structure here if you want the full layout.
          For now this is a clean version that displays real data. --}}
@@ -20,12 +21,7 @@
             </div>
             <a href="{{ route('admin.students.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium">+ Add student</a>
         </div>
-
-        @if(session('success'))
-            <div class="mb-4 p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-lg text-sm">
-                {{ session('success') }}
-            </div>
-        @endif
+        @include('partials.flash')
 
         <div class="bg-white border border-slate-200 rounded-xl overflow-hidden">
             <table class="w-full text-sm">
@@ -52,7 +48,14 @@
                                 </span>
                             </td>
                             <td class="px-4 py-3 text-right">
+                                <a href="{{ route('admin.students.show', $student) }}" class="text-slate-600 hover:underline text-sm mr-3">View</a>
                                 <a href="{{ route('admin.students.edit', $student) }}" class="text-blue-600 hover:underline text-sm">Edit</a>
+                                <form action="{{ route('admin.students.destroy', $student) }}" method="POST" class="inline"
+                                      onsubmit="return confirm('Delete this record? This cannot be undone.')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="text-red-600 hover:underline text-sm ml-3">Delete</button>
+                                </form>
                             </td>
                         </tr>
                     @empty
