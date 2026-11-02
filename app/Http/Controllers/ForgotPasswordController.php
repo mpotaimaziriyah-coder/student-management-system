@@ -14,7 +14,7 @@ class ForgotPasswordController extends Controller
     public function forgotpassword()
 
     {
-        return view('forgotpassword');
+        return view('forgot-password');
     }
 
     /**
