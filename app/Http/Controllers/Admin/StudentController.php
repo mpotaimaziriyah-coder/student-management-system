@@ -10,7 +10,7 @@ class StudentController extends Controller
 {
     public function index()
     {
-        $students = Student::latest()->paginate(15);
+        $students = Student::all()->paginate(15);
         return view('admin.students.index', compact('students'));
     }
 
@@ -73,7 +73,7 @@ class StudentController extends Controller
     {
         $student->delete();
 
-        return redirect()->route('admin.students.index')
+        return redirect()->back('admin.students.index')
             ->with('success', 'Student deleted successfully.');
     }
 }
