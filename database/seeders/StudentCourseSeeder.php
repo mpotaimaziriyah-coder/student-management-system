@@ -35,33 +35,7 @@ class StudentCourseSeeder extends Seeder
             ]
         );
 
-        Course::updateOrCreate(
-            ['code' => 'ICT 2205'],
-            [
-                'name' => 'Web Application Development',
-                'description' => 'Building modern web applications with Laravel.',
-                'credit_hours' => 3,
-                'semester' => 'Semester 1',
-                'academic_year' => '2026/2027',
-                'lecturer_id' => $lecturer1->id,
-                'status' => 'active',
-            ]
-        );
-
-        Course::updateOrCreate(
-            ['code' => 'ECO 2104'],
-            [
-                'name' => 'Microeconomics',
-                'description' => 'Principles of microeconomic theory.',
-                'credit_hours' => 3,
-                'semester' => 'Semester 1',
-                'academic_year' => '2026/2027',
-                'lecturer_id' => $lecturer2->id,
-                'status' => 'active',
-            ]
-        );
-
-        Student::updateOrCreate(
+        $student1 = Student::updateOrCreate(
             ['registration_number' => 'STU/2025/021'],
             [
                 'first_name' => 'Martha',
@@ -74,7 +48,7 @@ class StudentCourseSeeder extends Seeder
             ]
         );
 
-        Student::updateOrCreate(
+        $student2 = Student::updateOrCreate(
             ['registration_number' => 'STU/2023/014'],
             [
                 'first_name' => 'Dennis',
@@ -86,5 +60,45 @@ class StudentCourseSeeder extends Seeder
                 'status' => 'active',
             ]
         );
+
+        $student3 = Student::updateOrCreate(
+            ['registration_number' => 'STU/2024/005'],
+            [
+                'first_name' => 'Grace',
+                'last_name' => 'Nabukenya',
+                'email' => 'grace.nabukenya@mubs.ac.ug',
+                'program' => 'BSc Computer Science',
+                'year_of_study' => '2',
+                'gender' => 'Female',
+                'status' => 'active',
+            ]
+        );
+
+        $student4 = Student::updateOrCreate(
+            ['registration_number' => 'STU/2025/011'],
+            [
+                'first_name' => 'John',
+                'last_name' => 'Kato',
+                'email' => 'john.kato@mubs.ac.ug',
+                'program' => 'BBA Economics',
+                'year_of_study' => '3',
+                'gender' => 'Male',
+                'status' => 'active',
+            ]
+        );
+
+        $student5 = Student::updateOrCreate(
+            ['registration_number' => 'STU/2023/008'],
+            [
+                'first_name' => 'Alice',
+                'last_name' => 'Nansubuga',
+                'email' => 'alice.nansubuga@mubs.ac.ug',
+                'program' => 'BBA Economics',
+                'year_of_study' => '3',
+                'gender' => 'Female',
+                'status' => 'active',
+            ]
+        );
+
     }
 }
