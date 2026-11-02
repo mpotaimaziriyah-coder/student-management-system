@@ -6,11 +6,14 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+ feature/contact-page
 
 
     /**
      * Display a listing of the resource.
      */
+
+ develop
     public function index()
     {
         return view('index');
@@ -24,6 +27,7 @@ class HomeController extends Controller
     public function login()
     {
         return view('login');
+ feature/contact-page
     }
 
     public function register()
@@ -53,24 +57,21 @@ class HomeController extends Controller
     public function store(Request $request)
     {
         //
+
+ develop
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function register()
     {
-        //
+        return view('register');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function forgotpassword()
     {
-        //
+        return view('forgotpassword');
     }
 
+ feature/contact-page
     /**
      * Update the specified resource in storage.
      */
@@ -87,3 +88,6 @@ class HomeController extends Controller
         
     }
 }
+
+}
+ develop
