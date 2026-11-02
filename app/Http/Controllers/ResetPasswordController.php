@@ -4,14 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ResetPasswordController extends Controller
+class ResetpasswordController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function resetpassword()
+    public function index()
     {
-        return view('reset-password');
+        
+    }
+
+
+     public function resetpassword()
+    {
+        return view('resetpassword');
     }
 
     /**

@@ -17,10 +17,11 @@
                     <p class="mt-1 text-sm text-slate-500">Choose a password of at least 8 characters and confirm it below.</p>
                 </div>
 
-                <form action="login.html" method="get" class="space-y-5">
+                <form action="{{ route('resetpassword') }}" method="get" class="space-y-5">
                     <div>
                         <label for="password" class="block text-sm font-medium text-slate-600 mb-2">New password</label>
                         <input type="password" id="password" name="password" required minlength="8" class="input-field" placeholder="Minimum 8 characters">
+                        
                     </div>
                     <div>
                         <label for="password_confirmation" class="block text-sm font-medium text-slate-600 mb-2">Confirm new password</label>

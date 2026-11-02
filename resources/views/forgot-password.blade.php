@@ -35,7 +35,7 @@
                 <p class="mt-6 text-center text-sm text-slate-500">
                     Remembered it?
                     <a href="login.html" class="text-[#2563eb] hover:text-[#1d4ed8]">Back to sign in</a>
-                    <a href="{{ route('password.reset') }}"class="block text-center text-blue-600 mt-4"> Continue to Reset Password</a>
+                    <a href="{{ route('resetpassword') }}"class="block text-center text-blue-600 mt-4"> Continue to Reset Password</a>
                 </p>
             </div>
         </div>

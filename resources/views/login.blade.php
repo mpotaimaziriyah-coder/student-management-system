@@ -41,7 +41,7 @@
                 
                     </div>
 
-
+        
                     <div>
 
                         <label for="password" class="block text-sm font-medium text-slate-600 mb-2">Password</label>
@@ -52,7 +52,7 @@
                             <input type="password" id="password" name="password" required placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"
                                 class="block w-full pl-10 pr-3 py-3 rounded-xl bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#2563eb] focus:ring-1 focus:ring-[#2563eb]">
 
-                        </div>
+                        </div> 
                     </div>
                     <div class="flex items-center justify-between">
                         <label class="flex items-center gap-2 cursor-pointer">
@@ -70,6 +70,8 @@
                         <a href="admin/dashboard.html" class="text-center text-xs px-2 py-2 rounded-lg border border-slate-200 bg-white hover:border-[#2563eb]">Administrator</a>
                         <a href="lecturer/dashboard.html" class="text-center text-xs px-2 py-2 rounded-lg border border-slate-200 bg-white hover:border-[#d97706]">Lecturer</a>
                         <a href="dashboard.html" class="text-center text-xs px-2 py-2 rounded-lg border border-slate-200 bg-white hover:border-[#2563eb]">Student</a>
+                       
+                </p>
                     </div>
                     <p class="text-[11px] text-slate-400 mt-3 text-center">admin@mubs.ac.ug &middot; lecturer@mubs.ac.ug &middot; student@mubs.ac.ug</p>
                 </div>
@@ -77,6 +79,8 @@
                 <p class="mt-6 text-center text-sm text-slate-500">
                     New student?
                     <a href="register.html" class="text-[#2563eb] hover:text-[#1d4ed8]">Create an account</a>
+                    
+            </div>
                 </p>
             </div>
         </div>
