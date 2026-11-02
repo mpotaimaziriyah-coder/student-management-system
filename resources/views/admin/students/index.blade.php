@@ -8,7 +8,8 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body class="bg-slate-50">
-<div class="min-h-screen">
+ @include('patials.role-nav')
+ <div class="min-h-screen">
     {{-- Keep your existing sidebar/header structure here if you want the full layout.
          For now this is a clean version that displays real data. --}}
 
@@ -20,6 +21,8 @@
             </div>
             <a href="{{ route('admin.students.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium">+ Add student</a>
         </div>
+            @include('partials.flash')
+
 
         @if(session('success'))
             <div class="mb-4 p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-lg text-sm">
@@ -40,7 +43,7 @@
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100">
-                    @forelse($students as $student)
+                    @foreach($students as $student)
                         <tr class="hover:bg-slate-50">
                             <td class="px-4 py-3">{{ $student->registration_number }}</td>
                             <td class="px-4 py-3 font-medium">{{ $student->first_name }} {{ $student->last_name }}</td>
@@ -53,13 +56,20 @@
                             </td>
                             <td class="px-4 py-3 text-right">
                                 <a href="{{ route('admin.students.edit', $student) }}" class="text-blue-600 hover:underline text-sm">Edit</a>
+                                < <form action="{{ route(' admin.students.destroy', $student->id)}}" method="POST" class="inline"
+                            onsubmit="return confirm('Delete this record? This cannot be undone.')">
+                                    @csrf 
+                                    @method('DELETE')
+                                    <button type="submit" >Delete</button>
+                                </form>
+                              
                             </td>
                         </tr>
                     @empty
                         <tr>
                             <td colspan="6" class="px-4 py-8 text-center text-slate-500">No students found.</td>
                         </tr>
-                    @endforelse
+                    @endforeach
                 </tbody>
             </table>
         </div>

@@ -6,11 +6,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-50">
+    @include('patials.role-nav')
 <div class="max-w-7xl mx-auto px-4 py-8">
     <div class="flex justify-between items-center mb-6">
         <h1 class="text-2xl font-bold">Registrations</h1>
         <a href="{{ route('admin.registrations.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm">+ New registration</a>
     </div>
+    @include('partials.flash')
 
     @if(session('success'))
         <div class="mb-4 p-3 bg-emerald-50 text-emerald-800 rounded text-sm">{{ session('success') }}</div>
@@ -48,6 +50,10 @@
                                     <button class="text-red-600 text-sm">Reject</button>
                                 </form>
                             @endif
+                             <form action="{{ route(' admin.registrations.destroy', $reg->id)}}" method="POST" class="inline"
+                            onsubmit="return confirm('Remove this registration?')">
+                            @csrf
+                            @method('DELETE')
                         </td>
                     </tr>
                 @empty

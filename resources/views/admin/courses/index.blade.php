@@ -7,7 +7,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-50">
-<div class="max-w-7xl mx-auto px-4 py-8">
+ @include('patials.role-nav')
+ <div class="max-w-7xl mx-auto px-4 py-8">
     <div class="flex justify-between items-center mb-6">
         <div>
             <h1 class="text-2xl font-bold">Courses</h1>
@@ -15,6 +16,8 @@
         </div>
         <a href="{{ route('admin.courses.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium">+ Add course</a>
     </div>
+        @include('partials.flash')
+
 
     @if(session('success'))
         <div class="mb-4 p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-lg text-sm">
@@ -35,7 +38,7 @@
                 </tr>
             </thead>
             <tbody class="divide-y divide-slate-100">
-                @forelse($courses as $course)
+                @foreach($courses as $course)
                     <tr class="hover:bg-slate-50">
                         <td class="px-4 py-3 font-medium">{{ $course->code }}</td>
                         <td class="px-4 py-3">{{ $course->name }}</td>
@@ -43,14 +46,21 @@
                         <td class="px-4 py-3">{{ $course->credit_hours }}</td>
                         <td class="px-4 py-3">{{ $course->semester ?? '—' }}</td>
                         <td class="px-4 py-3 text-right">
+                            <a href="{{ route('admin.courses.show', $course) }}" class="text-blue-600 hover:underline text-sm mr-3">View</a>
                             <a href="{{ route('admin.courses.edit', $course) }}" class="text-blue-600 hover:underline text-sm">Edit</a>
+                            <form action="{{ route(' admin.courses.destroy', $course->id)}}" method="POST" class="inline"
+                            onsubmit="return confirm('Delete this record? This cannot be undone.')">
+                                    @csrf 
+                                    @method('DELETE')
+                                    <button type="submit" >Delete</button>
+                                </form>
                         </td>
                     </tr>
                 @empty
                     <tr>
                         <td colspan="6" class="px-4 py-8 text-center text-slate-500">No courses found.</td>
                     </tr>
-                @endforelse
+                @endforeach
             </tbody>
         </table>
     </div>

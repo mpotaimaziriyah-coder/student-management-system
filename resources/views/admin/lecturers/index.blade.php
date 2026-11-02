@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-50">
+   @include('patials.role-nav')
 <div class="max-w-7xl mx-auto px-4 py-8">
     <div class="flex justify-between items-center mb-6">
         <div>
@@ -15,6 +16,8 @@
         </div>
         <a href="{{ route('admin.lecturers.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium">+ Add lecturer</a>
     </div>
+        @include('partials.flash')
+
 
     @if(session('success'))
         <div class="mb-4 p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-lg text-sm">
@@ -34,7 +37,7 @@
                 </tr>
             </thead>
             <tbody class="divide-y divide-slate-100">
-                @forelse($lecturers as $lecturer)
+                @foreach($lecturers as $lecturer)
                     <tr class="hover:bg-slate-50">
                         <td class="px-4 py-3">{{ $lecturer->staff_id }}</td>
                         <td class="px-4 py-3 font-medium">{{ $lecturer->full_name }}</td>
@@ -42,13 +45,19 @@
                         <td class="px-4 py-3">{{ $lecturer->email }}</td>
                         <td class="px-4 py-3 text-right">
                             <a href="{{ route('admin.lecturers.edit', $lecturer) }}" class="text-blue-600 hover:underline text-sm">Edit</a>
+                            < <form action="{{ route(' admin.lecturers.destroy', $staff->id)}}" method="POST" class="inline"
+                            onsubmit="return confirm('Delete this record? This cannot be undone.')">
+                                    @csrf 
+                                    @method('DELETE')
+                                    <button type="submit" >Delete</button>
+                                </form>
                         </td>
                     </tr>
                 @empty
                     <tr>
                         <td colspan="5" class="px-4 py-8 text-center text-slate-500">No lecturers found.</td>
                     </tr>
-                @endforelse
+                @endforeach
             </tbody>
         </table>
     </div>

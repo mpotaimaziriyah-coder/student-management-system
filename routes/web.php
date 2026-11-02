@@ -81,3 +81,4 @@ Route::middleware(['auth', 'role:student'])->group(function () {
     })->name('student.dashboard');
 
 });
+Route::delete('destroy/{student}/{course}/{lecturer}', [HomeController::class, 'destroy'])->name('destroy');
