@@ -14,6 +14,9 @@ use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\LecturerController;
 use App\Http\Controllers\Admin\RegistrationController;
+use App\Http\Controllers\Student\CourseController as StudentCourseController;
+use App\Http\Controllers\Student\RegistrationController as StudentRegistrationController;
+use App\Http\Controllers\Lecturer\CourseController as LecturerCourseController;
 
 
 // Home Page
@@ -60,6 +63,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::post('/registrations', [RegistrationController::class, 'store'])->name('registrations.store');
     Route::post('/registrations/{registration}/approve', [RegistrationController::class, 'approve'])->name('registrations.approve');
     Route::post('/registrations/{registration}/reject', [RegistrationController::class, 'reject'])->name('registrations.reject');
+    Route::delete('/registrations/{registration}', [RegistrationController::class, 'destroy'])->name('registrations.destroy');
 
 });
 
@@ -71,6 +75,9 @@ Route::middleware(['auth', 'role:lecturer'])->prefix('lecturer')->name('lecturer
         return view('lecturer.dashboard');
     })->name('dashboard');
 
+    Route::get('/courses', [LecturerCourseController::class, 'index'])->name('courses.index');
+    Route::get('/courses/{course}', [LecturerCourseController::class, 'show'])->name('courses.show');
+
 });
 
 
@@ -80,5 +87,12 @@ Route::middleware(['auth', 'role:student'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('student.dashboard');
+
+    Route::prefix('student')->name('student.')->group(function () {
+        Route::get('/courses', [StudentCourseController::class, 'index'])->name('courses.index');
+        Route::get('/registrations', [StudentRegistrationController::class, 'index'])->name('registrations.index');
+        Route::post('/registrations', [StudentRegistrationController::class, 'store'])->name('registrations.store');
+        Route::delete('/registrations/{registration}', [StudentRegistrationController::class, 'destroy'])->name('registrations.destroy');
+    });
 
 });

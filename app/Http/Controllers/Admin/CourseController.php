@@ -42,7 +42,7 @@ class CourseController extends Controller
 
     public function show(Course $course)
     {
-        $course->load('lecturer');
+        $course->load(['lecturer', 'students']);
         return view('admin.courses.show', compact('course'));
     }
 
@@ -73,6 +73,11 @@ class CourseController extends Controller
 
     public function destroy(Course $course)
     {
+        if ($course->registrations()->exists()) {
+            return redirect()->route('admin.courses.index')
+                ->with('error', 'This course has student registrations. Remove them first before deleting the course.');
+        }
+
         $course->delete();
 
         return redirect()->back('admin.courses.index')
