@@ -9,6 +9,11 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\ResetPasswordController;
 
+ 
+
+
+
+
 
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\CourseController;
@@ -38,6 +43,9 @@ Route::get('/register', [RegisterController::class, 'register'])->name('register
 // Forgot Password
 Route::get('/forgotpassword', [ForgotPasswordController::class, 'forgotpassword'])->name('forgotpassword');
 Route::post('/forgotpassword', [ForgotPasswordController::class, 'forgotpassword'])->name('forgotpassword.post');
+Route::get('/resetpassword', [ResetPasswordController::class, 'resetpassword'])->name('resetpassword');
+Route::post('/resetpassword', [ResetPasswordController::class, 'resetpassword'])->name('resetpassword.post');
+
 
 // Reset Password
 Route::get('/resetpassword', [ResetPasswordController::class, 'resetpassword'])->name('resetpassword');
