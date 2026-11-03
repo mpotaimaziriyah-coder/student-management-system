@@ -56,7 +56,7 @@
 
                 <p class="mt-6 text-center text-sm text-slate-500">
                     Already have an account?
-                    <a href="login.html" class="text-[#2563eb] hover:text-[#1d4ed8]">Sign in</a>
+                    <a href="{{route('login')}}" class="text-[#2563eb] hover:text-[#1d4ed8]">Sign in</a>
                 </p>
             </div>
         </div>
