@@ -19,6 +19,8 @@
                 </div>
 
                 <form action="{{ route('login') }}" method="POST" class="space-y-5">
+ feature/contact-page
+ 
  
                   @csrf
  
@@ -27,9 +29,11 @@
 
 
 
+ develop
                     <div>
                         <label for="email" class="block text-sm font-medium text-slate-600 mb-2">Email</label>
-                        <div class="relative">
+                      
+                       <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
                                 <i data-lucide="mail" class="h-5 w-5"></i>
                             </div>
@@ -58,6 +62,14 @@
                             <span class="text-sm text-slate-500">Keep me signed in</span>
                         </label>
                         
+                        <a href="{{ route('forgotpassword') }}" class="text-sm text-[#2563eb] hover:text-[#1d4ed8]">Forgot password?</a>
+</div>
+                        <div class="flex items-center justify-between mt-4">
+                      <label class="flex items-center gap-2 cursor-pointer">
+            
+                       
+                 </label>
+
                     </div>
                     <button type="submit" class="w-full py-3 px-4 rounded-xl text-sm font-semibold text-white bg-[#2563eb] hover:bg-[#1d4ed8]">Sign in</button>
                 </form>
@@ -83,3 +95,6 @@
     @include('layouts.footer')
     <!-- End: Footer -->
 @endsection
+
+
+
