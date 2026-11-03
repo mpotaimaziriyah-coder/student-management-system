@@ -260,8 +260,8 @@
                 <h2 class="text-2xl sm:text-3xl font-bold mb-4">Registration closes on 14 Nov 2026</h2>
                 <p class="text-slate-500 mb-8 max-w-xl mx-auto">Create your student account with your registration number, or sign in if you already have one.</p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="register.html" class="px-8 py-4 bg-[#2563eb] text-white rounded-xl font-semibold text-sm hover:bg-[#1d4ed8] glow-blue">Create account</a>
-                    <a href="login.html" class="px-8 py-4 border border-slate-200 bg-white rounded-xl font-semibold text-sm hover:border-[#2563eb]/40">Sign in</a>
+                    <a href="{{ route('register') }}" class="px-8 py-4 bg-[#2563eb] text-white rounded-xl font-semibold text-sm hover:bg-[#1d4ed8] glow-blue">Create account</a>
+                    <a href="{{ route('login') }}" class="px-8 py-4 border border-slate-200 bg-white rounded-xl font-semibold text-sm hover:border-[#2563eb]/40">Sign in</a>
                 </div>
             </div>
         </div>
