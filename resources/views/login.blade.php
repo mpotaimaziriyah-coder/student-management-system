@@ -6,7 +6,7 @@
         <div class="w-full max-w-md">
             <div class="flex justify-center mb-8">
 
-                <a href="" class="inline-flex flex-col items-center gap-3">
+                <a href="/" class="inline-flex flex-col items-center gap-3">
                     <img src="assets/img/logo.png" alt="MUBS Student Management System" class="h-16 w-16">
                     <span class="text-sm font-semibold text-slate-900">MUBS Student Management System</span>
                     <span class="text-xs text-slate-500">Makerere University Business School</span>
@@ -19,7 +19,7 @@
                 </div>
 
                 <form action="{{ route('login') }}" method="POST" class="space-y-5">
- feature/contact-page
+ 
  
  
                   @csrf

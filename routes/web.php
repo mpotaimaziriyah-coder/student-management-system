@@ -44,6 +44,10 @@ Route::get('/resetpassword', [ResetPasswordController::class, 'resetpassword'])-
 Route::post('/resetpassword', [ResetPasswordController::class, 'resetpassword'])->name('resetpassword.post');
 
 
+// Reset Password
+Route::get('/resetpassword', [ResetPasswordController::class, 'resetpassword'])->name('resetpassword');
+Route::post('/resetpassword', [ResetPasswordController::class, 'resetpassword'])->name('resetpassword.post');
+
 
 // Admin Routes
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
