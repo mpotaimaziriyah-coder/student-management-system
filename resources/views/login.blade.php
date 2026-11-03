@@ -86,7 +86,7 @@
 
                 <p class="mt-6 text-center text-sm text-slate-500">
                     New student?
-                    <a href="register.html" class="text-[#2563eb] hover:text-[#1d4ed8]">Create an account</a>
+                    <a href="{{ route('register') }}" class="text-[#2563eb] hover:text-[#1d4ed8]">Create an account</a>
                 </p>
             </div>
         </div>

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
- feature/contact-page
+ 
  
 
 
@@ -16,7 +16,7 @@ class HomeController extends Controller
 
 
 
- develop
+ 
     public function index()
     {
         return view('index');
@@ -30,7 +30,7 @@ class HomeController extends Controller
     public function login()
     {
         return view('login');
- feature/contact-page
+ 
 
     }
 
@@ -64,11 +64,11 @@ class HomeController extends Controller
 
 
     }
- develop
+ 
 
-    }
+    
 
- feature/contact-page
+ 
  
     /**
      * Update the specified resource in storage.
@@ -85,14 +85,9 @@ class HomeController extends Controller
     {
         
     }
+    
 }
 
 
 
-    public function forgotpassword()
-    {
-        return view('forgotpassword');
-    }
-
-}
- develop
+   
