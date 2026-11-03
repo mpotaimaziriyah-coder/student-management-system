@@ -5,6 +5,7 @@
     <title>New Registration</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+@include('patials.role-nav')
 <body class="bg-slate-50">
 @include('partials.role-nav')
 <div class="max-w-xl mx-auto px-4 py-8">
@@ -14,7 +15,6 @@
 
     <form action="{{ route('admin.registrations.store') }}" method="POST" class="bg-white border rounded-xl p-6 space-y-4">
         @csrf
-
         <div>
             <label class="block text-sm font-medium mb-1">Student</label>
             <select name="student_id" required class="w-full border rounded-lg px-3 py-2">
@@ -24,7 +24,7 @@
                 @endforeach
             </select>
         </div>
-
+             @include('partials.flash')
         <div>
             <label class="block text-sm font-medium mb-1">Course</label>
             <select name="course_id" required class="w-full border rounded-lg px-3 py-2">

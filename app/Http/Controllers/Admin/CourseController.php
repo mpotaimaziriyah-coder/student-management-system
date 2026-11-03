@@ -80,7 +80,7 @@ class CourseController extends Controller
 
         $course->delete();
 
-        return redirect()->route('admin.courses.index')
+        return redirect()->back('admin.courses.index')
             ->with('success', 'Course deleted successfully.');
     }
 }

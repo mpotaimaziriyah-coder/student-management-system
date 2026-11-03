@@ -36,7 +36,7 @@
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100">
-                    @forelse($students as $student)
+                    @foreach($students as $student)
                         <tr class="hover:bg-slate-50">
                             <td class="px-4 py-3">{{ $student->registration_number }}</td>
                             <td class="px-4 py-3 font-medium">{{ $student->first_name }} {{ $student->last_name }}</td>
@@ -62,7 +62,7 @@
                         <tr>
                             <td colspan="6" class="px-4 py-8 text-center text-slate-500">No students found.</td>
                         </tr>
-                    @endforelse
+                    @endforeach
                 </tbody>
             </table>
         </div>

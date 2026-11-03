@@ -36,4 +36,9 @@ class Course extends Model
             ->withPivot('status', 'created_at')
             ->withTimestamps();
     }
+
+    public function registrations(): HasMany
+    {
+        return $this->hasMany(Registration::class);
+    }
 }
