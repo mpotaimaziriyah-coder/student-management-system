@@ -25,11 +25,6 @@ class Course extends Model
         return $this->belongsTo(Lecturer::class);
     }
 
-    public function registrations(): HasMany
-    {
-        return $this->hasMany(Registration::class);
-    }
-
     public function students(): BelongsToMany
     {
         return $this->belongsToMany(Student::class, 'registrations')
