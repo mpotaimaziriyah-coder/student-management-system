@@ -10,14 +10,14 @@
     <script>
         tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] } } } };
     </script>
-    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+    
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body class="bg-white text-slate-900 font-sans antialiased min-h-screen">
     @include('layouts.app-header')
     @include('layouts.app-sidebar')
 
-    <div class="pt-16 sm:pl-64 min-h-screen flex flex-col">
+    <div class="pt-6 sm:pl-64 min-h-screen flex flex-col">
         <main class="flex-1 pb-8 px-4 sm:px-8 lg:px-10 pt-6">
             @yield('content')
         </main>

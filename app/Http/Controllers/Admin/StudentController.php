@@ -10,7 +10,7 @@ class StudentController extends Controller
 {
     public function index()
     {
-        $students = Student::all()->paginate(15);
+        $students = Student::latest()->paginate(15);
         return view('admin.students.index', compact('students'));
     }
 

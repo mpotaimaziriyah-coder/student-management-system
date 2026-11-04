@@ -10,6 +10,11 @@ use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\ProfileController;
 
+ 
+
+
+
+
 
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\CourseController;
@@ -42,6 +47,9 @@ Route::get('/register', [RegisterController::class, 'register'])->name('register
 // Forgot Password
 Route::get('/forgotpassword', [ForgotPasswordController::class, 'forgotpassword'])->name('forgotpassword');
 Route::post('/forgotpassword', [ForgotPasswordController::class, 'forgotpassword'])->name('forgotpassword.post');
+Route::get('/resetpassword', [ResetPasswordController::class, 'resetpassword'])->name('resetpassword');
+Route::post('/resetpassword', [ResetPasswordController::class, 'resetpassword'])->name('resetpassword.post');
+
 
 // Reset Password
 Route::get('/resetpassword', [ResetPasswordController::class, 'resetpassword'])->name('resetpassword');
@@ -61,6 +69,10 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::resource('students', StudentController::class);
     Route::resource('courses', CourseController::class);
     Route::resource('lecturers', LecturerController::class);
+    Route::get('/users', function () {
+        $users = \App\Models\User::latest()->paginate(20);
+        return view('admin.users.index', compact('users'));
+    })->name('users.index');
 
     Route::get('/registrations', [RegistrationController::class, 'index'])->name('registrations.index');
     Route::get('/registrations/create', [RegistrationController::class, 'create'])->name('registrations.create');

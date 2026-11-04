@@ -1,66 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lecturers — MUBS Student Management System</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-slate-50">
-   @include('patials.role-nav')
-<div class="max-w-7xl mx-auto px-4 py-8">
-    <div class="flex justify-between items-center mb-6">
-        <div>
-            <h1 class="text-2xl font-bold">Lecturers</h1>
-            <p class="text-slate-500 text-sm">Lecturers and the courses assigned to them.</p>
-        </div>
-        <a href="{{ route('admin.lecturers.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium">+ Add lecturer</a>
+@extends('layouts.app')
+
+@section('title', 'Lecturers')
+
+@section('content')
+<div class="mb-6 flex justify-between items-center">
+    <div>
+        <h1 class="text-2xl font-bold">Lecturers</h1>
+        <p class="text-slate-500 text-sm">Lecturers and the courses assigned to them.</p>
     </div>
-        @include('partials.flash')
-
-
-    @if(session('success'))
-        <div class="mb-4 p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-lg text-sm">
-            {{ session('success') }}
-        </div>
-    @endif
-
-    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden">
-        <table class="w-full text-sm">
-            <thead class="bg-slate-50 text-slate-600">
-                <tr>
-                    <th class="px-4 py-3 text-left font-medium">Staff ID</th>
-                    <th class="px-4 py-3 text-left font-medium">Name</th>
-                    <th class="px-4 py-3 text-left font-medium">Department</th>
-                    <th class="px-4 py-3 text-left font-medium">Email</th>
-                    <th class="px-4 py-3 text-right font-medium">Actions</th>
-                </tr>
-            </thead>
-            <tbody class="divide-y divide-slate-100">
-                @foreach($lecturers as $lecturer)
-                    <tr class="hover:bg-slate-50">
-                        <td class="px-4 py-3">{{ $lecturer->staff_id }}</td>
-                        <td class="px-4 py-3 font-medium">{{ $lecturer->full_name }}</td>
-                        <td class="px-4 py-3">{{ $lecturer->department ?? '—' }}</td>
-                        <td class="px-4 py-3">{{ $lecturer->email }}</td>
-                        <td class="px-4 py-3 text-right">
-                            <a href="{{ route('admin.lecturers.edit', $lecturer) }}" class="text-blue-600 hover:underline text-sm">Edit</a>
-                            < <form action="{{ route(' admin.lecturers.destroy', $staff->id)}}" method="POST" class="inline"
-                            onsubmit="return confirm('Delete this record? This cannot be undone.')">
-                                    @csrf 
-                                    @method('DELETE')
-                                    <button type="submit" >Delete</button>
-                                </form>
-                        </td>
-                    </tr>
-                @empty
-                    <tr>
-                        <td colspan="5" class="px-4 py-8 text-center text-slate-500">No lecturers found.</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
+    <a href="{{ route('admin.lecturers.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm">+ Add lecturer</a>
 </div>
-</body>
-</html>
+
+@if(session('success'))
+    <div class="mb-4 p-3 bg-emerald-50 text-emerald-800 rounded text-sm">{{ session('success') }}</div>
+@endif
+
+<div class="bg-white border border-slate-200 rounded-xl overflow-hidden">
+    <table class="w-full text-sm">
+        <thead class="bg-slate-50 text-slate-600">
+            <tr>
+                <th class="px-4 py-3 text-left font-medium">Staff ID</th>
+                <th class="px-4 py-3 text-left font-medium">Name</th>
+                <th class="px-4 py-3 text-left font-medium">Department</th>
+                <th class="px-4 py-3 text-left font-medium">Email</th>
+                <th class="px-4 py-3 text-right font-medium">Actions</th>
+            </tr>
+        </thead>
+        <tbody class="divide-y divide-slate-100">
+            @forelse($lecturers as $lecturer)
+                <tr class="hover:bg-slate-50">
+                    <td class="px-4 py-3">{{ $lecturer->staff_id }}</td>
+                    <td class="px-4 py-3 font-medium">{{ $lecturer->full_name }}</td>
+                    <td class="px-4 py-3">{{ $lecturer->department ?? '—' }}</td>
+                    <td class="px-4 py-3">{{ $lecturer->email }}</td>
+                    <td class="px-4 py-3 text-right">
+                        <a href="{{ route('admin.lecturers.edit', $lecturer) }}" class="text-blue-600 hover:underline text-sm">Edit</a>
+                    </td>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="5" class="px-4 py-8 text-center text-slate-500">No lecturers found.</td>
+                </tr>
+            @endforelse
+        </tbody>
+    </table>
+</div>
+
+<div class="mt-4">
+    {{ $lecturers->links() }}
+</div>
+@endsection
