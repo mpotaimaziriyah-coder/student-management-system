@@ -10,10 +10,20 @@ use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\ResetPasswordController;
 
 
+ 
+
+
+
+
+
+
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\LecturerController;
 use App\Http\Controllers\Admin\RegistrationController;
+use App\Http\Controllers\Student\CourseController as StudentCourseController;
+use App\Http\Controllers\Student\RegistrationController as StudentRegistrationController;
+use App\Http\Controllers\Lecturer\CourseController as LecturerCourseController;
 
 
 // Home Page
@@ -38,8 +48,18 @@ Route::get('/register', [RegisterController::class, 'register'])->name('register
 // Forgot Password
 Route::get('/forgotpassword', [ForgotPasswordController::class, 'forgotpassword'])->name('forgotpassword');
 Route::post('/forgotpassword', [ForgotPasswordController::class, 'forgotpassword'])->name('forgotpassword.post');
+
 Route::post('/forgotpassword', [ResetPasswordController::class, 'resetpassword'])->name('resetpassword');
 Route::post('/forgotpassword', [ResetPasswordController::class, 'resetpassword'])->name('resetpassword');
+
+Route::get('/resetpassword', [ResetPasswordController::class, 'resetpassword'])->name('resetpassword');
+Route::post('/resetpassword', [ResetPasswordController::class, 'resetpassword'])->name('resetpassword.post');
+
+
+// Reset Password
+Route::get('/resetpassword', [ResetPasswordController::class, 'resetpassword'])->name('resetpassword');
+Route::post('/resetpassword', [ResetPasswordController::class, 'resetpassword'])->name('resetpassword.post');
+
 
 
 // Admin Routes
@@ -52,12 +72,17 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::resource('students', StudentController::class);
     Route::resource('courses', CourseController::class);
     Route::resource('lecturers', LecturerController::class);
+    Route::get('/users', function () {
+        $users = \App\Models\User::latest()->paginate(20);
+        return view('admin.users.index', compact('users'));
+    })->name('users.index');
 
     Route::get('/registrations', [RegistrationController::class, 'index'])->name('registrations.index');
     Route::get('/registrations/create', [RegistrationController::class, 'create'])->name('registrations.create');
     Route::post('/registrations', [RegistrationController::class, 'store'])->name('registrations.store');
     Route::post('/registrations/{registration}/approve', [RegistrationController::class, 'approve'])->name('registrations.approve');
     Route::post('/registrations/{registration}/reject', [RegistrationController::class, 'reject'])->name('registrations.reject');
+    Route::delete('/registrations/{registration}', [RegistrationController::class, 'destroy'])->name('registrations.destroy');
 
 });
 
@@ -69,6 +94,9 @@ Route::middleware(['auth', 'role:lecturer'])->prefix('lecturer')->name('lecturer
         return view('lecturer.dashboard');
     })->name('dashboard');
 
+    Route::get('/courses', [LecturerCourseController::class, 'index'])->name('courses.index');
+    Route::get('/courses/{course}', [LecturerCourseController::class, 'show'])->name('courses.show');
+
 });
 
 
@@ -78,5 +106,12 @@ Route::middleware(['auth', 'role:student'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('student.dashboard');
+
+    Route::prefix('student')->name('student.')->group(function () {
+        Route::get('/courses', [StudentCourseController::class, 'index'])->name('courses.index');
+        Route::get('/registrations', [StudentRegistrationController::class, 'index'])->name('registrations.index');
+        Route::post('/registrations', [StudentRegistrationController::class, 'store'])->name('registrations.store');
+        Route::delete('/registrations/{registration}', [StudentRegistrationController::class, 'destroy'])->name('registrations.destroy');
+    });
 
 });

@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Registration;
 use App\Models\Student;
+use Illuminate\Database\UniqueConstraintViolationException;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class RegistrationController extends Controller
 {
@@ -30,23 +32,31 @@ class RegistrationController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'student_id' => 'required|exists:students,id',
-            'course_id' => 'required|exists:courses,id',
+            'student_id' => ['required', Rule::exists('students', 'id')->where('status', 'active')],
+            'course_id' => [
+                'required',
+                Rule::exists('courses', 'id')->where('status', 'active'),
+                // a student can register for a course only once
+                Rule::unique('registrations', 'course_id')->where('student_id', $request->input('student_id')),
+            ],
+        ], [
+            'student_id.required' => 'Please select a student.',
+            'student_id.exists' => 'The selected student does not exist or is not active.',
+            'course_id.required' => 'Please select a course.',
+            'course_id.exists' => 'The selected course does not exist or is not active.',
+            'course_id.unique' => 'This student is already registered for the selected course.',
         ]);
 
-        $exists = Registration::where('student_id', $validated['student_id'])
-            ->where('course_id', $validated['course_id'])
-            ->exists();
-
-        if ($exists) {
-            return back()->withErrors(['course_id' => 'This student is already registered for the selected course.']);
+        try {
+            Registration::create([
+                'student_id' => $validated['student_id'],
+                'course_id' => $validated['course_id'],
+                'status' => 'pending',
+            ]);
+        } catch (UniqueConstraintViolationException) {
+            // two admins clicking at the same moment: the database index still protects us
+            return back()->withInput()->with('error', 'This student is already registered for the selected course.');
         }
-
-        Registration::create([
-            'student_id' => $validated['student_id'],
-            'course_id' => $validated['course_id'],
-            'status' => 'pending',
-        ]);
 
         return redirect()->route('admin.registrations.index')
             ->with('success', 'Registration submitted successfully.');
@@ -72,5 +82,12 @@ class RegistrationController extends Controller
         ]);
 
         return back()->with('success', 'Registration rejected.');
+    }
+
+    public function destroy(Registration $registration)
+    {
+        $registration->delete();
+
+        return back()->with('success', 'Registration removed.');
     }
 }

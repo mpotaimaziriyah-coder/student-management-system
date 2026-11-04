@@ -21,16 +21,16 @@ class HomeController extends Controller
     {
         return view('login');
 
-
     }
 
     public function register()
     {
-         return view('register');
+        return view('register');
     }
 
     public function forgotpassword()
     {
+
     return view('forgot-password');
     }
      public function resetpassword()
@@ -69,10 +69,7 @@ class HomeController extends Controller
      */
     public function destroy(string $id)
     {
-        
+
     }
+
 }
-
-
-
-   

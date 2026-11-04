@@ -6,7 +6,7 @@
         <div class="w-full max-w-md">
             <div class="flex justify-center mb-8">
 
-                <a href="" class="inline-flex flex-col items-center gap-3">
+                <a href="/" class="inline-flex flex-col items-center gap-3">
                     <img src="assets/img/logo.png" alt="MUBS Student Management System" class="h-16 w-16">
                     <span class="text-sm font-semibold text-slate-900">MUBS Student Management System</span>
                     <span class="text-xs text-slate-500">Makerere University Business School</span>
@@ -19,7 +19,7 @@
                 </div>
 
                 <form action="{{ route('login') }}" method="POST" class="space-y-5">
- feature/contact-page
+ 
  
  
                   @csrf
@@ -77,16 +77,21 @@
                 <div class="mt-6 pt-6 border-t border-slate-200">
                     <p class="text-xs text-slate-500 mb-3 text-center">Try a demo account</p>
                     <div class="grid grid-cols-3 gap-2">
-                        <a href="admin/dashboard.html" class="text-center text-xs px-2 py-2 rounded-lg border border-slate-200 bg-white hover:border-[#2563eb]">Administrator</a>
-                        <a href="lecturer/dashboard.html" class="text-center text-xs px-2 py-2 rounded-lg border border-slate-200 bg-white hover:border-[#d97706]">Lecturer</a>
-                        <a href="dashboard.html" class="text-center text-xs px-2 py-2 rounded-lg border border-slate-200 bg-white hover:border-[#2563eb]">Student</a>
-                    </div>
+    @foreach ([['Administrator', 'admin@mubs.ac.ug'], ['Lecturer', 'lecturer@mubs.ac.ug'], ['Student', 'student@mubs.ac.ug']] as [$label, $demoEmail])
+        <form method="POST" action="{{ route('login.post') }}">
+            @csrf
+            <input type="hidden" name="email" value="{{ $demoEmail }}">
+            <input type="hidden" name="password" value="password">
+            <button type="submit" class="w-full text-center text-xs px-2 py-2 rounded-lg border border-slate-200 bg-white hover:border-[#2563eb]">{{ $label }}</button>
+        </form>
+    @endforeach
+</div>
                     <p class="text-[11px] text-slate-400 mt-3 text-center">admin@mubs.ac.ug &middot; lecturer@mubs.ac.ug &middot; student@mubs.ac.ug</p>
                 </div>
 
                 <p class="mt-6 text-center text-sm text-slate-500">
                     New student?
-                    <a href="register.html" class="text-[#2563eb] hover:text-[#1d4ed8]">Create an account</a>
+                    <a href="{{route('register')}}" class="text-[#2563eb] hover:text-[#1d4ed8]">Create an account</a>
                 </p>
             </div>
         </div>

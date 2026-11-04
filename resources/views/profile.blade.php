@@ -172,6 +172,4 @@
     </div>
     <!-- End: Main content -->
 
-    <script>lucide.createIcons();</script>
-</body>
-</html>
+    @endsection
