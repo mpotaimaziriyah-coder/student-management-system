@@ -65,6 +65,10 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::resource('students', StudentController::class);
     Route::resource('courses', CourseController::class);
     Route::resource('lecturers', LecturerController::class);
+    Route::get('/users', function () {
+        $users = \App\Models\User::latest()->paginate(20);
+        return view('admin.users.index', compact('users'));
+    })->name('users.index');
 
     Route::get('/registrations', [RegistrationController::class, 'index'])->name('registrations.index');
     Route::get('/registrations/create', [RegistrationController::class, 'create'])->name('registrations.create');

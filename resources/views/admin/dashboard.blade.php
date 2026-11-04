@@ -21,26 +21,26 @@
                 <div class="lg:col-span-2 bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
                     <div class="flex justify-between items-center mb-4">
                         <h2 class="text-lg font-semibold">Recent registrations</h2>
-                        <a href="/registrations/index.html" class="text-sm text-[#2563eb]">All registrations</a>
+                        <a href="{{ route('admin.registrations.index') }}" class="text-sm text-[#2563eb]">All registrations</a>
                     </div>
                     <div class="space-y-3">
-                        <a href="/registrations/show.html" class="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-blue-200"><div><p class="text-sm font-medium">Dennis Okwir &mdash; ECO 2104</p><p class="text-xs text-slate-500 mt-1">STU/2023/014 &middot; Ms. Sarah Nambi &middot; 05 Oct 2026</p></div><span class="text-xs px-2 py-1 rounded-full bg-bg-emerald-50 text-emerald-700">Approved</span></a><a href="/registrations/show.html" class="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-blue-200"><div><p class="text-sm font-medium">Martha Achieng &mdash; ICT 2205</p><p class="text-xs text-slate-500 mt-1">STU/2025/021 &middot; Dr. Daniel Okello &middot; 12 Oct 2026</p></div><span class="text-xs px-2 py-1 rounded-full bg-bg-amber-50 text-[#d97706]">Pending</span></a><a href="/registrations/show.html" class="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-blue-200"><div><p class="text-sm font-medium">Martha Achieng &mdash; ECO 2104</p><p class="text-xs text-slate-500 mt-1">STU/2025/021 &middot; Ms. Sarah Nambi &middot; 12 Oct 2026</p></div><span class="text-xs px-2 py-1 rounded-full bg-bg-amber-50 text-[#d97706]">Pending</span></a>
+                        <a href="{{ route('admin.registrations.index') }}" class="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-blue-200"><div><p class="text-sm font-medium">Dennis Okwir &mdash; ECO 2104</p><p class="text-xs text-slate-500 mt-1">STU/2023/014 &middot; Ms. Sarah Nambi &middot; 05 Oct 2026</p></div><span class="text-xs px-2 py-1 rounded-full bg-bg-emerald-50 text-emerald-700">Approved</span></a><a href="{{ route('admin.registrations.index') }}" class="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-blue-200"><div><p class="text-sm font-medium">Martha Achieng &mdash; ICT 2205</p><p class="text-xs text-slate-500 mt-1">STU/2025/021 &middot; Dr. Daniel Okello &middot; 12 Oct 2026</p></div><span class="text-xs px-2 py-1 rounded-full bg-bg-amber-50 text-[#d97706]">Pending</span></a><a href="{{ route('admin.registrations.index') }}" class="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-blue-200"><div><p class="text-sm font-medium">Martha Achieng &mdash; ECO 2104</p><p class="text-xs text-slate-500 mt-1">STU/2025/021 &middot; Ms. Sarah Nambi &middot; 12 Oct 2026</p></div><span class="text-xs px-2 py-1 rounded-full bg-bg-amber-50 text-[#d97706]">Pending</span></a>
                     </div>
                 </div>
                 <div class="space-y-4">
-                    <a href="students/index.html" class="block bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:border-blue-200">
+                    <a href="{{ route('admin.students.index') }}" class="block bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:border-blue-200">
                         <div class="flex items-center gap-3 mb-2"><i data-lucide="graduation-cap" class="w-5 h-5 text-[#2563eb]"></i><h3 class="font-semibold">Students</h3></div>
                         <p class="text-sm text-slate-500">184 students on the register</p>
                     </a>
-                    <a href="courses/index.html" class="block bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:border-amber-200">
+                    <a href="{{ route('admin.courses.index') }}" class="block bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:border-amber-200">
                         <div class="flex items-center gap-3 mb-2"><i data-lucide="book-open" class="w-5 h-5 text-[#d97706]"></i><h3 class="font-semibold">Courses</h3></div>
                         <p class="text-sm text-slate-500">12 courses this semester</p>
                     </a>
-                    <a href="lecturers/index.html" class="block bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:border-blue-200">
+                    <a href="{{ route('admin.lecturers.index') }}" class="block bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:border-blue-200">
                         <div class="flex items-center gap-3 mb-2"><i data-lucide="presentation" class="w-5 h-5 text-[#2563eb]"></i><h3 class="font-semibold">Lecturers</h3></div>
                         <p class="text-sm text-slate-500">6 lecturers with assigned courses</p>
                     </a>
-                    <a href="users/index.html" class="block bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:border-amber-200">
+                    <a href="{{ route('admin.users.index') }}" class="block bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:border-amber-200">
                         <div class="flex items-center gap-3 mb-2"><i data-lucide="users" class="w-5 h-5 text-[#d97706]"></i><h3 class="font-semibold">Users &amp; roles</h3></div>
                         <p class="text-sm text-slate-500">191 users across 3 roles</p>
                     </a>
