@@ -31,4 +31,9 @@ class HomeController extends Controller
         return view('forgotpassword');
     }
 
+    public function profile()
+    {
+        return view('profile');
+    }
+
 }

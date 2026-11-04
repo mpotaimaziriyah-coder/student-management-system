@@ -1,4 +1,8 @@
 @extends('layouts.main')
+
+@section('content')
+
+
  
     <!-- Start: Sidebar toggle (checkbox, no JavaScript) -->
     <input type="checkbox" id="sidebar-toggle" class="peer hidden">
@@ -59,7 +63,7 @@
                                 <p class="text-sm font-medium">Aisha Namuli</p>
                                 <p class="text-xs text-slate-500 truncate">aisha.namuli@mubs.ac.ug</p>
                             </div>
-                            <a href="profile.html" class="flex items-center px-4 py-2 text-sm text-slate-600 hover:bg-slate-50"><i data-lucide="user" class="w-4 h-4 mr-2"></i>My Profile</a>
+                            <a href="{{ route('profile') }}" class="flex items-center px-4 py-2 text-sm text-slate-600 hover:bg-slate-50"><i data-lucide="user" class="w-4 h-4 mr-2"></i>My Profile</a>
                             <a href="profile.html#settings" class="flex items-center px-4 py-2 text-sm text-slate-600 hover:bg-slate-50"><i data-lucide="settings" class="w-4 h-4 mr-2"></i>Account Settings</a>
                             <a href="login.html" class="flex items-center px-4 py-2 text-sm text-[#d97706] hover:bg-slate-50 border-t border-slate-200"><i data-lucide="log-out" class="w-4 h-4 mr-2"></i>Sign out</a>
                         </div>
@@ -112,7 +116,7 @@
             <div class="grid lg:grid-cols-3 gap-6">
                 <!-- Start: Profile form -->
                 <div class="lg:col-span-2 bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
-                    <form action="profile.html" method="get">
+                    <form action="{{ route('profile ') }}" method="get">
                         <div class="p-6 space-y-5">
                             <div class="grid sm:grid-cols-2 gap-5">
                                 <div><label class="block text-sm font-medium text-slate-600 mb-2">Full name</label><input class="input-field" name="name" value="Aisha Namuli"></div>
@@ -147,7 +151,8 @@
                     <!-- Start: Password card -->
                     <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
                         <h2 class="text-sm font-semibold text-slate-500 mb-3">Change password</h2>
-                        <form action="profile.html" method="get" class="space-y-3">
+
+                        <form action="{{ route('profile') }}" method="get" class="space-y-3">
                             <input type="password" class="input-field" name="password" placeholder="Current password">
                             <input type="password" class="input-field" name="password_new" placeholder="New password (min 8 characters)">
                             <input type="password" class="input-field" name="password_confirmation" placeholder="Confirm new password">
@@ -160,14 +165,7 @@
 
         </main>
         <!-- Start: Footer -->
-        <footer class="bg-[#1e3a8a] mt-auto">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-                <div class="flex flex-col md:flex-row justify-between items-center gap-3">
-                    <p class="text-sm text-blue-100">&copy; 2026 <span class="font-semibold text-white">MUBS Student Management System</span>. All rights reserved.</p>
-                    <p class="text-sm text-blue-200">Registry &middot; Computing &middot; Business Admin &middot; Economics</p>
-                </div>
-            </div>
-        </footer>
+       @include('layouts.footer')
         <!-- End: Footer -->
     </div>
     <!-- End: Main content -->
