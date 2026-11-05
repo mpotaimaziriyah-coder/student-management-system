@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
@@ -28,13 +29,36 @@ class AuthController extends Controller
 
         $request->session()->regenerate();
 
-        $user = Auth::user();
+        return $this->redirectByRole(Auth::user());
+    }
 
-        return match ($user->role) {
-            'admin' => redirect()->intended('/admin/dashboard'),
-            'lecturer' => redirect()->intended('/lecturer/dashboard'),
-            default => redirect()->intended('/dashboard'),
-        };
+    public function demo($role)
+    {
+        abort_unless(app()->environment('local'), 404);
+
+        $emails = [
+            'admin'    => 'admin@mubs.ac.ug',
+            'lecturer' => 'lecturer@mubs.ac.ug',
+            'student'  => 'student@mubs.ac.ug',
+        ];
+        abort_unless(isset($emails[$role]), 404);
+
+        $user = User::where('email', $emails[$role])->firstOrFail();
+        Auth::login($user);
+        request()->session()->regenerate();
+
+        return $this->redirectByRole($user);
+    }
+
+    protected function redirectByRole($user)
+    {
+        if ($user->hasRole('admin')) {
+            return redirect()->route('admin.dashboard');
+        }
+        if ($user->hasRole('lecturer')) {
+            return redirect()->route('lecturer.dashboard');
+        }
+        return redirect()->route('student.dashboard');
     }
 
     public function logout(Request $request)

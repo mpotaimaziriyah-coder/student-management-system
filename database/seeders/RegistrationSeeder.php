@@ -15,11 +15,11 @@ class RegistrationSeeder extends Seeder
      */
     public function run(): void
     {
-        $student1 = Student::where('registration_number', 'STU/2025/001')->first();
-        $student2 = Student::where('registration_number', 'STU/2025/002')->first();
-        $student3 = Student::where('registration_number', 'STU/2025/003')->first();
-        $student4 = Student::where('registration_number', 'STU/2025/004')->first();
-        $student5 = Student::where('registration_number', 'STU/2025/005')->first();
+        $student1 = Student::where('registration_number', 'STU/2024/001')->first();
+        $student2 = Student::where('registration_number', 'STU/2023/002')->first();
+        $student3 = Student::where('registration_number', 'STU/2023/003')->first();
+        $student4 = Student::where('registration_number', 'STU/2024/004')->first();
+        $student5 = Student::where('registration_number', 'STU/2023/005')->first();
 
         $course1 = Course::first();
         $course2 = Course::skip(1)->first();
