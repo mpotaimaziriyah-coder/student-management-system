@@ -18,7 +18,7 @@
                     <p class="mt-1 text-sm text-slate-500">Use your MUBS email to register for courses, or sign in as a lecturer or administrator.</p>
                 </div>
 
-                <form action="{{ route('login') }}" method="POST" class="space-y-5">
+                <form action="{{ route('login.post') }}" method="POST" class="space-y-5">
  
  
  
@@ -29,7 +29,7 @@
 
 
 
- develop
+ 
                     <div>
                         <label for="email" class="block text-sm font-medium text-slate-600 mb-2">Email</label>
                       
