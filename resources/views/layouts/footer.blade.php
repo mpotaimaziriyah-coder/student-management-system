@@ -11,11 +11,11 @@
                 <div>
                     <h4 class="font-bold text-lg mb-6">Quick links</h4>
                     <ul class="space-y-3 text-sm text-blue-100">
-                        <li><a href="login.html" class="hover:text-white">Sign in</a></li>
-                        <li><a href="register.html" class="hover:text-white">Create account</a></li>
+                        <li><a href="{{ route('login') }}" class="hover:text-white">Sign in</a></li>
+                        <li><a href="{{ route('register') }} class="hover:text-white">Create account</a></li>
                         <li><a href="courses.html" class="hover:text-white">Available courses</a></li>
                         <li><a href="admin/dashboard.html" class="hover:text-white">Admin dashboard</a></li>
-                        <li><a href="contact.html" class="hover:text-white">Contact registry</a></li>
+                        <li><a href="{{ route('contact') }}" class="hover:text-white">Contact registry</a></li>
                     </ul>
                 </div>
                 <div>
@@ -30,7 +30,7 @@
                 <div>
                     <h4 class="font-bold text-lg mb-6">Contact</h4>
                     <ul class="space-y-2 text-sm text-blue-100">
-                        <li><a href="contact.html" class="hover:text-white">registry@mubs.ac.ug</a></li>
+                        <li><a href="{{ route('contact') }}" class="hover:text-white">registry@mubs.ac.ug</a></li>
                         <li>Registry: 0414 000 210</li>
                         <li>ICT support: 0414 000 211</li>
                         <li class="text-[#fbbf24] pt-2">Mon&ndash;Fri, 8:00am &ndash; 5:00pm</li>

@@ -8,6 +8,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\ProfileController;
 
 
  
@@ -61,6 +62,9 @@ Route::middleware('auth')->get('/home', function () {
     if ($user->hasRole('lecturer')) return redirect()->route('lecturer.dashboard');
     return redirect()->route('student.dashboard');
 })->name('dashboard');
+
+//profile
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 
 
 // Admin Routes
