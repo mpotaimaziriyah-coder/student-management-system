@@ -40,26 +40,27 @@ Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+// Demo logins (local only)
+Route::get('/demo/{role}', [AuthController::class, 'demo'])->name('demo');
 
 // Registration
 Route::get('/register', [RegisterController::class, 'register'])->name('register');
 
-
-// Forgot Password
+// Forgot / Reset Password
 Route::get('/forgotpassword', [ForgotPasswordController::class, 'forgotpassword'])->name('forgotpassword');
 Route::post('/forgotpassword', [ForgotPasswordController::class, 'forgotpassword'])->name('forgotpassword.post');
-
-Route::post('/forgotpassword', [ResetPasswordController::class, 'resetpassword'])->name('resetpassword');
-Route::post('/forgotpassword', [ResetPasswordController::class, 'resetpassword'])->name('resetpassword');
-
 Route::get('/resetpassword', [ResetPasswordController::class, 'resetpassword'])->name('resetpassword');
 Route::post('/resetpassword', [ResetPasswordController::class, 'resetpassword'])->name('resetpassword.post');
 
 
-// Reset Password
-Route::get('/resetpassword', [ResetPasswordController::class, 'resetpassword'])->name('resetpassword');
-Route::post('/resetpassword', [ResetPasswordController::class, 'resetpassword'])->name('resetpassword.post');
+// Dashboard redirect (sends each user to their own dashboard)
+Route::middleware('auth')->get('/home', function () {
+    $user = auth()->user();
 
+    if ($user->hasRole('admin'))    return redirect()->route('admin.dashboard');
+    if ($user->hasRole('lecturer')) return redirect()->route('lecturer.dashboard');
+    return redirect()->route('student.dashboard');
+})->name('dashboard');
 
 
 // Admin Routes

@@ -1,28 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Dashboard') — MUBS Student Management System</title>
-    <link rel="icon" type="image/png" href="{{ asset('assets/img/logo.png') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>@yield('title', 'Dashboard') — MUBS Student Management</title>
+
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] } } } };
-    </script>
-    
-    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="bg-white text-slate-900 font-sans antialiased min-h-screen">
-    @include('layouts.app-header')
+<body class="bg-slate-50 text-slate-900 antialiased">
+
+    <input type="checkbox" id="sidebar-toggle" class="peer hidden">
+
+    <!-- Top bar -->
+    <header class="fixed top-0 left-0 right-0 z-50 h-16 bg-white border-b border-slate-200 flex items-center justify-between px-4">
+        <div class="flex items-center gap-3">
+            <label for="sidebar-toggle" class="sm:hidden cursor-pointer p-2">
+                <i data-lucide="menu" class="w-5 h-5"></i>
+            </label>
+            <img src="{{ asset('assets/img/logo.png') }}" alt="MUBS" class="h-9 w-9">
+            <div>
+                <p class="text-sm font-semibold leading-tight">MUBS Student Management System</p>
+                <p class="text-xs text-slate-500 leading-tight">Makerere University Business School</p>
+            </div>
+        </div>
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit" class="text-sm px-3 py-2 rounded-lg border border-slate-200 hover:bg-slate-50">Log out</button>
+        </form>
+    </header>
+
     @include('layouts.app-sidebar')
 
-    <div class="pt-6 sm:pl-64 min-h-screen flex flex-col">
-        <main class="flex-1 pb-8 px-4 sm:px-8 lg:px-10 pt-6">
+    <main class="sm:ml-64 pt-16">
+        <div class="p-6">
             @yield('content')
-        </main>
-        @include('layouts.app-footer')
-    </div>
+        </div>
+    </main>
 
     <script>lucide.createIcons();</script>
 </body>

@@ -1,7 +1,12 @@
 <!-- Start: Sidebar -->
 <aside class="fixed top-0 left-0 z-40 w-64 h-screen pt-16 -translate-x-full peer-checked:translate-x-0 sm:translate-x-0 bg-white border-r border-slate-200 flex flex-col">
     <div class="flex-1 px-3 py-4 overflow-y-auto sidebar-scrollbar">
-        @php($role = auth()->user()?->role)
+    @php
+    $user = auth()->user();
+    $role = $user?->hasRole('admin') ? 'admin'
+          : ($user?->hasRole('lecturer') ? 'lecturer'
+          : ($user?->hasRole('student') ? 'student' : null));
+@endphp
 
         <div class="space-y-1 mb-5">
             <p class="px-3 text-xs font-semibold text-slate-400 uppercase mb-2">Main</p>
