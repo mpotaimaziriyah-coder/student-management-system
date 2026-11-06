@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Lecturer;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class LecturerController extends Controller
 {
@@ -33,10 +35,22 @@ class LecturerController extends Controller
             'status' => 'nullable|string',
         ]);
 
+        //keeps the lecturer loggeg in
+
         Lecturer::create($validated);
 
-        return redirect()->route('admin.lecturers.index')
-            ->with('success', 'Lecturer created successfully.');
+        $lecturer = Lecturer::create($validated);
+
+    $user = User::create([
+        'name'     => $lecturer->first_name . ' ' . $lecturer->last_name,
+        'email'    => $lecturer->email,
+        'password' => Hash::make('password'),
+    ]);
+    $user->assignRole('lecturer');
+
+    return redirect()->route('admin.lecturers.index')
+        ->with('success', 'Lecturer created successfully. Login: ' . $lecturer->email . ' / password');
+
     }
 
     public function show(Lecturer $lecturer)

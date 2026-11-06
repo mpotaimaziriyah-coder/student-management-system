@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Registrations — MUBS Student Management System</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-slate-50">
-@include('partials.role-nav')
-<div class="max-w-7xl mx-auto px-4 py-8">
+@extends('layouts.app')
+@section('title', 'My Registrations')
+@section('content')
     <div class="flex justify-between items-center mb-6">
         <div>
             <h1 class="text-2xl font-bold">My registrations</h1>
@@ -59,6 +51,4 @@
             </tbody>
         </table>
     </div>
-</div>
-</body>
-</html>
+@endsection
