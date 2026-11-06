@@ -24,10 +24,11 @@
                     <td class="px-4 py-3 font-medium">{{ $user->name }}</td>
                     <td class="px-4 py-3">{{ $user->email }}</td>
                     <td class="px-4 py-3">
-                        <span class="text-xs px-2 py-1 rounded-full
-                            {{ $user->role === 'admin' ? 'bg-blue-50 text-blue-700' : ($user->role === 'lecturer' ? 'bg-amber-50 text-amber-700' : 'bg-emerald-50 text-emerald-700') }}">
-                            {{ ucfirst($user->role ?? 'student') }}
-                        </span>
+                    @php($roleName = $user->getRoleNames()->first() ?? 'none')
+                    <span class="text-xs px-2 py-1 rounded-full
+                        {{ $roleName === 'admin' ? 'bg-blue-50 text-blue-700' : ($roleName === 'lecturer' ? 'bg-amber-50 text-amber-700' : 'bg-emerald-50 text-emerald-700') }}">
+                        {{ ucfirst($roleName) }}
+                    </span>
                     </td>
                     <td class="px-4 py-3 text-slate-500">{{ $user->created_at->format('d M Y') }}</td>
                 </tr>

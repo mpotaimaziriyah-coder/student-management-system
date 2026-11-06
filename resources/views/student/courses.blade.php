@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Available Courses — MUBS Student Management System</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-slate-50">
-@include('partials.role-nav')
-<div class="max-w-7xl mx-auto px-4 py-8">
+@extends('layouts.app')
+@section('title', 'Available Courses')
+@section('content')
+
     <div class="mb-6">
         <h1 class="text-2xl font-bold">Available courses</h1>
         <p class="text-slate-500 text-sm">Courses open for registration. Welcome, {{ $student->full_name }}.</p>
@@ -63,6 +56,4 @@
             </tbody>
         </table>
     </div>
-</div>
-</body>
-</html>
+@endsection

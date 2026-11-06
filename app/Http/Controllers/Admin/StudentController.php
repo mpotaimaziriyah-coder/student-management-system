@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
 {
@@ -33,10 +35,17 @@ class StudentController extends Controller
             'status' => 'nullable|string',
         ]);
 
-        Student::create($validated);
+        $Student = Student::create($validated);
 
+        $user = User::create([
+            'name'     => $student->first_name . ' ' . $student->last_name,
+            'email'    => $student->email,
+            'password' => Hash::make('password'),
+        ]);
+        $user->assignRole('student');
+    
         return redirect()->route('admin.students.index')
-            ->with('success', 'Student created successfully.');
+            ->with('success', 'Student created successfully. Login: ' . $student->email . ' / password');
     }
 
     public function show(Student $student)
