@@ -121,16 +121,23 @@
                 <h1 class="text-xl font-semibold mb-2">Edit student</h1>
                 <p class="text-sm text-slate-500 mb-6">Update the record for <span class="font-medium text-slate-700">Aisha Namuli (STU/2024/001)</span>.</p>
             </div>
+                @include('partials.flash')
+
             <!-- End: Page heading -->
 
             <!-- Start: Form -->
-            <form action="index.html" method="get" class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm max-w-2xl">
+            <form action="{{ route('admin.students.update',$student->id)}}"  method="POST" class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm max-w-2xl">
+                @csrf 
+                @method('PUT')
                 <div class="p-6 space-y-5">
                     <div class="grid sm:grid-cols-2 gap-5">
-                        <div><label class="block text-sm font-medium text-slate-600 mb-2">Full name</label><input class="input-field" name="name" value="Aisha Namuli"></div>
-                        <div><label class="block text-sm font-medium text-slate-600 mb-2">Registration number</label><input class="input-field" name="reg_no" value="STU/2024/001"></div>
+                        <div><label class="block text-sm font-medium text-slate-600 mb-2">First name</label><input class="input-field" name="first_name" value="{{ old('first_name', $student->first_name) }}"></div>
+                        <div><label class="block text-sm font-medium text-slate-600 mb-2">Last name</label><input class="input-field" name="last_name" value="{{ old('last_name', $student->last_name) }}"></div>
+                        </div>
+                        <div class="grid sm:grid-cols-2 gap-5">
+                        <div><label class="block text-sm font-medium text-slate-600 mb-2">Registration number</label><input class="input-field" name="registration_number" value="{{ old('registration_number', $student->registration_number) }}"></div>
                     </div>
-                    <div><label class="block text-sm font-medium text-slate-600 mb-2">Email</label><input type="email" class="input-field" name="email" value="aisha.namuli@mubs.ac.ug"></div>
+                    <div><label class="block text-sm font-medium text-slate-600 mb-2">Email</label><input type="email" class="input-field" name="email" value="{{ old('email', $student->email) }}"></div>
                     <div class="grid sm:grid-cols-2 gap-5">
                         <div><label class="block text-sm font-medium text-slate-600 mb-2">Programme</label>
                             <select name="programme" class="input-field">
@@ -151,7 +158,7 @@
                 </div>
                 <div class="px-4 py-4 bg-white border-t border-slate-200 flex justify-between">
                     <a href="index.html" class="px-4 py-2 border border-slate-200 rounded-lg text-sm text-slate-600 hover:bg-slate-100">Cancel</a>
-                    <button class="px-4 py-2 bg-[#2563eb] rounded-lg text-sm font-medium text-white hover:bg-[#1d4ed8]">Save changes</button>
+                    <button type="submit" class="px-4 py-2 bg-[#2563eb] rounded-lg text-sm font-medium text-white hover:bg-[#1d4ed8]">Save changes</button>
                 </div>
             </form>
             <!-- End: Form -->

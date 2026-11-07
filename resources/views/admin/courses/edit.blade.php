@@ -119,18 +119,21 @@
             <!-- Start: Page heading -->
             <div class="max-w-2xl">
                 <h1 class="text-xl font-semibold mb-2">Edit course</h1>
-                <p class="text-sm text-slate-500 mb-6">Update <span class="font-medium text-slate-700">ICT 2205 &mdash; Web Application Development</span>. 18 students are already registered.</p>
+                <p class="text-sm text-slate-500 mb-6">Update {{ $course->code}},{{ $course->name}}<span class="font-medium text-slate-700">ICT 2205 &mdash; Web Application Development</span>. 18 students are already registered.</p>
             </div>
+            @include('partials.flash')
             <!-- End: Page heading -->
 
             <!-- Start: Form -->
-            <form action="index.html" method="get" class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm max-w-2xl">
+            <form action="{{ route('admin.courses.update',$course->id)}}" method="POST" class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm max-w-2xl">
+                @csrf
+                @method('PUT')
                 <div class="p-6 space-y-5">
                     <div class="grid sm:grid-cols-2 gap-5">
-                        <div><label class="block text-sm font-medium text-slate-600 mb-2">Course code</label><input class="input-field" name="code" value="ICT 2205"></div>
+                        <div><label class="block text-sm font-medium text-slate-600 mb-2">Course code</label><input class="input-field" name="code" value="{{ old('course_code', $course->course_code) }}"></div>
                         <div><label class="block text-sm font-medium text-slate-600 mb-2">Credits</label><input type="number" min="1" max="6" class="input-field" name="credits" value="3"></div>
                     </div>
-                    <div><label class="block text-sm font-medium text-slate-600 mb-2">Title</label><input class="input-field" name="title" value="Web Application Development"></div>
+                    <div><label class="block text-sm font-medium text-slate-600 mb-2">Title</label><input class="input-field" name="title" value="{{ old('title', $course->title) }}"></div>
                     <div class="grid sm:grid-cols-2 gap-5">
                         <div><label class="block text-sm font-medium text-slate-600 mb-2">Lecturer</label>
                             <select name="lecturer" class="input-field">
@@ -145,7 +148,7 @@
                 </div>
                 <div class="px-4 py-4 bg-white border-t border-slate-200 flex justify-between">
                     <a href="index.html" class="px-4 py-2 border border-slate-200 rounded-lg text-sm text-slate-600 hover:bg-slate-100">Cancel</a>
-                    <button class="px-4 py-2 bg-[#2563eb] rounded-lg text-sm font-medium text-white hover:bg-[#1d4ed8]">Save changes</button>
+                    <button type="submit" class="px-4 py-2 bg-[#2563eb] rounded-lg text-sm font-medium text-white hover:bg-[#1d4ed8]">Save changes</button>
                 </div>
             </form>
             <!-- End: Form -->
