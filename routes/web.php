@@ -71,7 +71,14 @@ Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
 
     Route::get('/dashboard', function () {
-        return view('admin.dashboard');
+        return view('admin.dashboard', [
+            'studentCount'      => \App\Models\Student::count(),
+            'courseCount'       => \App\Models\Course::count(),
+            'lecturerCount'     => \App\Models\Lecturer::count(),
+            'registrationCount' => \App\Models\Registration::count(),
+            'pendingCount'      => \App\Models\Registration::where('status', 'pending')->count(),
+            'userRoles'         => \App\Models\User::count(),
+        ]);
     })->name('dashboard');
 
     Route::resource('students', StudentController::class);
