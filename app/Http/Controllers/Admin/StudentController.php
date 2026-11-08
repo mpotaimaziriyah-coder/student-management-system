@@ -35,7 +35,7 @@ class StudentController extends Controller
             'status' => 'nullable|string',
         ]);
 
-        $Student = Student::create($validated);
+        $student = Student::create($validated);
 
         $user = User::create([
             'name'     => $student->first_name . ' ' . $student->last_name,
@@ -89,7 +89,7 @@ class StudentController extends Controller
 
         $student->delete();
 
-        return redirect()->back('admin.students.index')
+        return redirect()->route('admin.students.index')
             ->with('success', 'Student deleted successfully.');
     }
 }

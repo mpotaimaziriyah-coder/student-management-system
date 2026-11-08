@@ -10,6 +10,7 @@
     </div>
     <a href="{{ route('admin.students.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm">+ Add student</a>
 </div>
+@include('partials.flash')
 
 @if(session('success'))
     <div class="mb-4 p-3 bg-emerald-50 text-emerald-800 rounded text-sm">{{ session('success') }}</div>
@@ -40,7 +41,13 @@
                         </span>
                     </td>
                     <td class="px-4 py-3 text-right">
-                        <a href="{{ route('admin.students.edit', $student) }}" class="text-blue-600 hover:underline text-sm">Edit</a>
+                        <a href="{{ route('admin.students.edit', $student->id) }}" class="text-blue-600 hover:underline text-sm">Edit</a>
+                         <form action="{{ route('admin.students.destroy',$student->id)}}" method="POST" class="inline"
+                            onsubmit="return confirm('Delete this record? This cannot be undone.')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="text-red-600 hover:underline text-sm ml-3">Delete</button>
+                        </form>
                     </td>
                 </tr>
             @empty
