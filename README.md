@@ -1,59 +1,122 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# MUBS Student Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A Laravel web application for managing students, courses, lecturers and course registrations at Makerere University Business School.
 
-## About Laravel
+Course: Advanced Web Application Development (BUC3131), Academic Year 2026/2027
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Group members
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+| Name | Registration number | Contribution 
+| Mpotaima Ziriyah | 24/U/0706 |  Documentation - blade view layouts -feature/updated seederfiles   |
+| Namuyaba Precious | 24/U/09419/PS |  feature/q4-complete  Application functionality|
+| Kirabo Isaac Musa | 24/U/24078/PS | feature/auth-roles Q3|
+| Manana James Joshua | 24/U/06641/EVE | feature/database-relationships q1 |
+| Mukaga Kevin Wanyama | 24/U/07162/PS| feature/seeders  Q2 seeders and sample data|
+| Nankanja Sarah | 24/U/22937| feature/contact-page and index  - blade layouts and links|
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Features
 
-## Learning Laravel
+- Authentication with role-based access (Spatie Laravel Permission)
+- Administrator: manages students, courses, lecturers, registrations and users
+- Lecturer: views assigned courses and their registered students
+- Student: views available courses, registers, and sees their own registrations
+- Duplicate registration prevention
+- Validation and success/error messages
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Requirements
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- PHP 8.3 or higher
+- Composer
+- MySQL (XAMPP)
+- Node.js and npm
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## Installation
 
-## Agentic Development
+1. Clone the repository:
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+   ```
+   git clone [https://github.com/mpotaimaziriyah-coder/student-management-system]
+   cd student-management-system
+   ```
 
-```bash
-composer require laravel/boost --dev
+2. Install dependencies:
 
-php artisan boost:install
-```
+   composer install
+   npm install
+   
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+3. Create the environment file:
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+   copy .env.example .env
+   php artisan key:generate
+   
 
-## Code of Conduct
+4. Create a MySQL database (for example `Mubs_Student_Management`) in phpMyAdmin.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+5. Edit `.env`:
 
-## Security Vulnerabilities
+   ```
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=Mubs_Student_Management
+   DB_USERNAME=root
+   DB_PASSWORD=
+   ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+6. Create the tables and sample data:
 
-## License
+   php artisan migrate:fresh --seed
+   ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+7. Start the application:
 
+   php artisan serve
+   ```
+
+8. Open http://127.0.0.1:8000
+
+## User roles and sample logins
+
+| Role | Email | Password | Can do |
+|------|-------|----------|--------|
+| Administrator | admin@mubs.ac.ug | password | Manage students, courses, lecturers, registrations, users |
+| Lecturer | lecturer@mubs.ac.ug | password | View assigned courses and registered students |
+| Student | student@mubs.ac.ug | password | View available courses, register, view own registrations |
+
+Other seeded accounts (all with password `password`): joytiko@gmail.com (admin), daniel.okello@mubs.ac.ug and sarah.nambi@mubs.ac.ug (lecturers), and the seeded students.
+
+## Database design
+
+- `users`: login accounts
+- `students`, `lecturers`, `courses`
+- `registrations`: links students to courses (unique on student + course, with foreign keys)
+- Spatie tables: `roles`, `permissions`, `model_has_roles`, `role_has_permissions`
+
+Relationships: a lecturer has many courses; a course belongs to a lecturer; a student and a course are linked many-to-many through registrations.
+
+## Screenshots
+
+
+![Login](screenshots/Login.png)
+
+![Admin dashboard](screenshots/Admin-dashboard.png)
+
+![Lecturer dashboard](screenshots/Lecturer-dashboard.png)
+
+![Student dashboard](screenshots/Student-dashboard.png)
+
+![Student registration](screenshots/registration.png)
+
+![Users and roles](screenshots/User-roles.png)
+
+![Delete message](screenshots/Delete-message.png)
+
+![Success message](screenshots/Success-message.png)
+
+## GitHub workflow
+
+- `main`: stable codes
+- `develop`: integration
+- Feature branches: `feature/application-functionality, feature/auth-roles,feature/blade layout,feature/blade view,feature/contact-page,feature/course-seeder,feature/database-relationships,feature/header-changes`, merged into `develop` through pull requests
