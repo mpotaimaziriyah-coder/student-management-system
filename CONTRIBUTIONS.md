@@ -24,13 +24,13 @@
 
 | # | Title | From | Into | Author | Status |
 |---|-------|------|------|--------|--------|
-| [#31,29,24,22,]| feature/updated-seederfiles | develop | Mpotaima Ziriyah | Merged |
+| [#31,29,24,22,32]| feature/updated-seederfiles | develop | Mpotaima Ziriyah | Merged |
 | [#15,30,17] | feature/q4-complete | develop | Namuyaba Precious | Merged |
 | [#25,7] | feature/auth-roles | develop | Kirabo Isaac Musa | Merged |
 | [#11]  | feature/database-relationships | develop | Manana James Joshua | Merged |
 | [#13] | feature/seeders | develop | Mukaga Kevin Wanyama | Merged |
 | [#12,14,8,]  | feature/contact-page | develop | Nankanja Sarah | Merged |
-| [#] | develop to main | develop | main | [name] | Merged |
+
 
 ## Commit summary
 
