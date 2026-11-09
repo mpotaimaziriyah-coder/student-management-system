@@ -7,12 +7,12 @@ Course: Advanced Web Application Development (BUC3131), Academic Year 2026/2027
 ## Group members
 
 | Name | Registration number | Contribution 
-| Mpotaima Ziriyah | 24/U/0706 |  Documentation - blade view layouts -feature/updated seederfiles   |
-| Namuyaba Precious | 24/U/09419/PS |  feature/q4-complete  Application functionality|
-| Kirabo Isaac Musa | 24/U/24078/PS | feature/auth-roles Q3|
-| Manana James Joshua | 24/U/06641/EVE | feature/database-relationships q1 |
+| Mpotaima Ziriyah | 24/U/0706 |  Documentation - blade view layouts updated seederfiles   |
+| Namuyaba Precious | 24/U/09419/PS |  q4-complete  Application functionality|
+| Kirabo Isaac Musa | 24/U/24078/PS | auth-roles Q3|
+| Manana James Joshua | 24/U/06641/EVE | database-relationships q1 |
 | Mukaga Kevin Wanyama | 24/U/07162/PS| feature/seeders  Q2 seeders and sample data|
-| Nankanja Sarah | 24/U/22937| feature/contact-page and index  - blade layouts and links|
+| Nankanja Sarah | 24/U/22937| feature/contact-page and index  - blade layouts, validation  and links|
 
 ## Features
 
